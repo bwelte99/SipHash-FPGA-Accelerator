@@ -27,13 +27,13 @@
 //#include "vectors_255B.h"
 //#include "vectors_511B.h"
 //#include "vectors_1023B.h"
-//#include "vectors_2047B.h"
+#include "vectors_2047B.h"
 //#include "vectors_4095B.h"
 //#include "vectors_8191B.h"
 //#include "vectors_16383B.h"
 //#include "vectors_32767B.h"
 //#include "vectors_65535B.h"
-#include "vectors_1048575B.h"
+//#include "vectors_1048575B.h"
 
 /*
  * DMA Register Map:
@@ -79,7 +79,7 @@ int main()
 
     uint32_t sw_start_time, sw_end_time, sw_hash_time;
 
-    uint32_t hw_count = 0;
+    uint32_t volatile hw_count = 0;
 
     //strings to store hash values for strcmp
     char hw_hash_string[20];
@@ -141,11 +141,11 @@ int main()
     //Configure the timer in cyclic, generate, count-up mode
     *(TIMER_ADDR) = 0x00000011;
 
-    /*
+
     //Sleep for 10 seconds so the ILA can be armed before the DMA runs
     xil_printf("\nSleeping for 10 s (arm the ILA now!)\n\r");
     sleep(10);
-	*/
+
 
     //Start the timer
     xil_printf("\nStarting Timer & DMA transaction...\n\r");
