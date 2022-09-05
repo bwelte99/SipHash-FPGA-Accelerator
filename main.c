@@ -19,22 +19,6 @@
 #include "xil_printf.h"
 #include "siphash.h"
 #include "addresses.h"
-//#include "vectors_papertest.h"
-//#include "vectors_7B.h"
-//#include "vectors_15B.h"
-//#include "vectors_31B.h"
-//#include "vectors_63B.h"
-//#include "vectors_127B.h"
-//#include "vectors_255B.h"
-//#include "vectors_511B.h"
-//#include "vectors_1023B.h"
-//#include "vectors_2047B.h"
-//#include "vectors_4095B.h"
-//#include "vectors_8191B.h"
-//#include "vectors_16383B.h"
-//#include "vectors_32767B.h"
-//#include "vectors_65535B.h"
-//#include "vectors_1048575B.h"
 #include "vectors_full.h"
 
 #define NUM_TEST_CORES 2
@@ -93,7 +77,6 @@ int main()
     	}
     }
 
-
     //******************
     //Program the DMA
     //******************
@@ -130,40 +113,36 @@ int main()
     int test_vector_size_bytes = 7;
     int hash_index = 0;
     uint32_t temp_hash;
+    uint32_t hash_check;
 
     while (test_vector_size_bytes <= 1048575){
 
 		xil_printf("\n\r\t------\n\r");
         xil_printf("\t%d-byte test\n\r", test_vector_size_bytes);
 
+        hash_check = (0xFFFFFFFF & hashes[hash_index]);
+
 		//Start the timer
 		hw_start_time = *(TIMER_ADDR + 2);
 		*(TIMER_ADDR) |= 0x00000080;
 
 		//Write message length to DMA (should start the transaction)
-		//Note: this is one less than the exact size, but it will still
-		//		work bc the SipHash core ignores tkeep
+		//Note: this is one less than the total transaction including the message size, but the size
+		//		will still be factored into the hash bc the SipHash core ignores tkeep
 		for (int i = 0; i < NUM_TEST_CORES; i++){
 			*(DMA_ADDR[i] + 10) = test_vector_size_bytes;
 		}
 
-		//Incorrect way to check that will print the 13 hashes
-		/*
-		do {
-			temp_count += *(SIPHASH_ADDR[NUM_TEST_CORES - 1] + 5);
-		}
-		while(temp_count == hash_count);
-		*/
-
+		//poll the last core's hash to know when to stop the timer
 		do{
 			temp_hash = *(SIPHASH_ADDR[NUM_TEST_CORES - 1] + 6);
 		}
-		while((0xFFFFFFFF & hashes[hash_index]) != temp_hash);
+		while(hash_check != temp_hash);
 
 		//Record timer value after hashing is done
 		hw_end_time = *(TIMER_ADDR + 2);
 
-		//reset hash count to match the temp count
+		//increment hash index to check the next hash
 		hash_index++;
 
 		//Check the hash and make sure it's valid
