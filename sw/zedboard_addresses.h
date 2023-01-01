@@ -19,7 +19,11 @@ uint32_t* volatile DMA_ADDR[] = {
 		(uint32_t*) 0x40400000,
 		(uint32_t*) 0x40410000,
 		(uint32_t*) 0x40420000,
-		(uint32_t*) 0x40430000
+		(uint32_t*) 0x40430000,
+		(uint32_t*) 0x40440000,
+		(uint32_t*) 0x40450000,
+		(uint32_t*) 0x40460000,
+		(uint32_t*) 0x40470000
 };
 
 /*
@@ -45,7 +49,11 @@ uint32_t* volatile SIPHASH_ADDR[] = {
 		(uint32_t*) 0x43C00000,
 		(uint32_t*) 0x43C10000,
 		(uint32_t*) 0x43C20000,
-		(uint32_t*) 0x43C30000
+		(uint32_t*) 0x43C30000,
+		(uint32_t*) 0x43C40000,
+		(uint32_t*) 0x43C50000,
+		(uint32_t*) 0x43C60000,
+		(uint32_t*) 0x43C70000
 };
 
 

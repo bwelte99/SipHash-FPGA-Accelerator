@@ -19,10 +19,11 @@
 #include "xil_printf.h"
 #include "siphash.h"
 #include "vectors_full.h"
-#include "ZCU106_Addresses.h"
+//#include "zedboard_addresses.h"
+#include "zcu106_addresses.h"
 
-//Number of iterations of SipHash used in the test
-#define NUM_TEST_CORES 4
+//Number of SipHash in this test
+#define NUM_TEST_CORES 13
 
 //Choose between hardware/software version of SipHash to test
 //	NOTE: compile w/-O0 for Hardware, -O3 for Software
@@ -30,7 +31,7 @@ static enum modes {
 	HARDWARE, SOFTWARE
 };
 
-#define TIMING_MODE HARDWARE
+#define TIMING_MODE SOFTWARE
 
 /*
  * Helper function to update the size of the test vectors for the next test case
@@ -133,6 +134,11 @@ int main() {
 
 			hash_check = (0xFFFFFFFF & hashes[hash_index]);
 
+			/*
+			xil_printf("\n\rSleeping for 10 s (ARM THE ILA NOW!)");
+			sleep(10);
+			*/
+
 			//Start the timer
 			hw_start_time = *(TIMER_ADDR + 2);
 			*(TIMER_ADDR) |= 0x00000080;
@@ -206,6 +212,7 @@ int main() {
 			hash_index++;
 
 		}
+
 	}
 
 	else if (TIMING_MODE == SOFTWARE){
@@ -244,7 +251,7 @@ int main() {
 					*(sw_hash_ptr + 1), *(sw_hash_ptr));
 
 			//convert correct hash to a string to check against the software hash
-			sprintf(expected_hash_string, "%16lX", hashes[hash_index]);
+			sprintf(expected_hash_string, "%016llX", hashes[hash_index]);
 			xil_printf("\tExpected Hash: %s\n\r", expected_hash_string);
 
 			if (!strcmp(expected_hash_string, sw_hash_string)){

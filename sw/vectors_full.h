@@ -131088,7 +131088,7 @@ const static uint64_t test_vectors[] = {
 };
 
 //hashes for SipHash2-4 (comment these out if using SipHash1-3)
-
+/*
 const static uint64_t hashes[] = {
 	0xF0801A2F7D1753AD,
 	0xB3464D2236919ECC,
@@ -131106,10 +131106,10 @@ const static uint64_t hashes[] = {
 	0x4B24657BC1255F89,
 	0xD6EF83620507283C
 };
-
+*/
 
 //hashes for SipHash1-3 (comment these out if using SipHash2-4)
-/*
+
 const static uint64_t hashes[] = {
 		0xC648D5C186F8DFDF,	//0
 		0x171670EEA9366739,	//1
@@ -131127,6 +131127,5 @@ const static uint64_t hashes[] = {
 		0x82530EA22BDDFC90,	//13
 		0x83556CA6E7B259B0	//14
 };
-*/
 
 #endif
