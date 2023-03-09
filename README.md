@@ -19,9 +19,7 @@ To calculate the latency and throughput for SipHash2-4 on your local workstation
 4) Execute the resulting executable, 'servertest'
 `./servertest`
 
-You should see output from a variety of tests indicating the latency and throughput for SipHash2-4 using a variety of input sizes (these performance measurements were obtained using gettimeofday())
-
-
+You should see output from a variety of tests indicating the latency and throughput for SipHash2-4 using a variety of input sizes
 
 
 
