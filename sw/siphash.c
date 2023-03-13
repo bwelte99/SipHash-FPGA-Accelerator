@@ -22,10 +22,10 @@
 
 /* default: SipHash-2-4 */
 #ifndef cROUNDS
-#define cROUNDS 1	//changeme
+#define cROUNDS 2	//changeme
 #endif
 #ifndef dROUNDS
-#define dROUNDS 3	//changeme
+#define dROUNDS 4	//changeme
 #endif
 
 #define ROTL(x, b) (uint64_t)(((x) << (b)) | ((x) >> (64 - (b))))
