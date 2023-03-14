@@ -23,7 +23,11 @@ You should see output from a variety of tests indicating the latency and through
 
 To see results for SipHash1-3 instead of SipHash2-4, you will need to edit siphash.c.  Change cRounds to 1 and dRounds to 3, i.e. `#define cRounds 1` and `#define dRounds 3`.  You should also comment out the array of hashes for SipHash2-4 in vectors_full.h and uncomment the hash array for SipHash1-3 to verify the results are correct.
 
+## Recreating the Vivado Project
+**Note: The following instructions assume you are using version 2020.1 of the Xilinx tools (Vivado & Vitis) or another compatible version**
 
+
+## Recreating the Vitis Project
 
 
 
