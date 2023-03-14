@@ -55,10 +55,12 @@ To change whether a hardware or software implementation of SipHash is being time
 To vary the number of iterations of SipHash used in the test, change the macro definition of NUM_TEST_CORES in main.c.  If the selected timing mode is hardware, this macro will control the number of parallel cores on the FPGA that are utilized. If the selected timing mode is software, the `siphash()` function will be sequentially invoked once for each core. Valid values of NUM_TEST_CORES range from 1 to 16, inclusive.
 
 #### SipHash2-4 vs. SipHash1-3
+Note that the version of SipHash the FPGA will execute is determined by the .xsa file you chose at the beginning of project creation!
+  
 To switch from SipHash2-4 to SipHash1-3, change the definitions of cRounds and dRounds in siphash.c from 2 and 4 respectively to 1 and 3.  Conversely, to switch back to SipHash2-4, revert cRounds and dRounds to 2 and 4.  
 
 To verify the results' correctness, ensure that the proper array of hashes is not commented out in vectors_full.h.  If you scroll to the bottom of vectors_full.h, you will notice there are two declarationsof `hashes[]`, one for SipHash2-4 and another for SipHash1-3.  Comment out the array declaration for the algorithm you are not using.
-
+  
 8) Finally, build the project in the Vitis IDE.  Note that if you are timing the SipHash software, you will see the best results by compiling with -O3 optimization, but if you are timing the hardware, the application will only function correctly if compiled with -O0.  To change optimization settings, right click the application in the project explorer and go to "C/C++ Build Settings" -> "C/C++ Build" -> "Settings" -> "ARM v8 gcc compiler" -> "Optimization" and select the desired optimization level from the drop-down menu.
 
 9) Assuming the build succeeds, you should now have a functioning baremetal executable for your chosen FPGA.  The application will print the results of a given experiment via UART (baud rate = 115,200) which you can observe with an appropriate program (PuTTY, picocom, etc).
