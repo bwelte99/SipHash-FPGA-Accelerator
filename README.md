@@ -63,7 +63,9 @@ To verify the results' correctness, ensure that the proper array of hashes is no
   
 **8)** Finally, build the project in the Vitis IDE.  Note that if you are timing the SipHash software, you will see the best results by compiling with -O3 optimization, but if you are timing the hardware, the application will only function correctly if compiled with -O0.  To change optimization settings, right click the application in the project explorer and go to "C/C++ Build Settings" -> "C/C++ Build" -> "Settings" -> "ARM v8 gcc compiler" -> "Optimization" and select the desired optimization level from the drop-down menu.
   
-  ![image](https://user-images.githubusercontent.com/71848340/225121872-7e8fdcab-f039-4bfe-ae07-65311f8d52c7.png)
+![image](https://user-images.githubusercontent.com/71848340/225122319-fda39745-5b39-4bff-826c-13230ae18cf5.png)
+
+![image](https://user-images.githubusercontent.com/71848340/225122422-c400b3d1-4a47-41fa-93ab-59d51b5438cb.png)
 
 
 **9)** Assuming the build succeeds, you should now have a functioning baremetal executable for your chosen FPGA.  The application will print the results of a given experiment via UART (baud rate = 115,200) which you can observe with an appropriate program (PuTTY, picocom, etc).
