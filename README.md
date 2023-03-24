@@ -13,23 +13,24 @@ To calculate the latency and throughput for SipHash2-4 on your local workstation
 
 2) Navigate to the /workstation/ directory
 
-`cd path/to/SipHash-FPGA-Accelerator/workstation`
+
+&emsp; `cd path/to/SipHash-FPGA-Accelerator/workstation`
 
 3) Build the project
 
-`make`
+&emsp; `make`
 
 4) Run the resulting executable
 
-`./workstation`
+&emsp; `./workstation`
 
 You should see output from a variety of tests indicating the latency and throughput of SipHash2-4 for different input sizes.
 
 To see results for SipHash1-3 instead of SipHash2-4, clean the project and rebuild with the following commands:
 
-`make clean`
+&emsp; `make clean`
 
-`make CROUNDS=1 DROUNDS=3`
+&emsp; `make CROUNDS=1 DROUNDS=3`
 
 
 This will rebuild the `workstation` executable using SipHash1-3 instead of SipHash2-4.  Cleaning the project is necessary beforehand to ensure the build process recreates the object files using SipHash1-3.  Similarly, if you want to revert to SipHash2-4, you will need to clean the project and rebuild.  By default, `make` will build using SipHash2-4, you can make double sure by running `make CROUNDS=2 DROUNDS=4`.
