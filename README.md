@@ -7,7 +7,7 @@ The .xsa files under \wrappers\ can be used in Vitis to instantiate a test bench
 ## Testing Siphash on a Workstation Machine
 To calculate the latency and throughput for SipHash2-4 on your local workstation, follow these steps on a Linux machine:
 
-1) Clone the repo 
+1) Clone the repo \
 `git clone https://github.com/bwelte99/SipHash-FPGA-Accelerator.git`
 
 2) Navigate to the /workstation/ directory
@@ -22,7 +22,7 @@ To calculate the latency and throughput for SipHash2-4 on your local workstation
 You should see output from a variety of tests indicating the latency and throughput of SipHash2-4 for different input sizes.
 
 To see results for SipHash1-3 instead of SipHash2-4, clean the project and rebuild with the following commands:
-`make clean`
+`make clean` \
 `make CROUNDS=1 DROUNDS=3`
 
 This will rebuild the `workstation` executable using SipHash1-3 instead of SipHash2-4.  Cleaning the project is necessary beforehand to ensure the build process recreates the object files using SipHash1-3.  Similarly, if you want to revert to SipHash2-4, you will need to clean the project and rebuild.  By default, `make` will build using SipHash2-4, you can make double sure by running `make CROUNDS=2 DROUNDS=4`.
