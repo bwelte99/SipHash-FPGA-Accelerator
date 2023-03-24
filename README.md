@@ -35,12 +35,39 @@ To see results for SipHash1-3 instead of SipHash2-4, clean the project and rebui
 
 This will rebuild the `workstation` executable using SipHash1-3 instead of SipHash2-4.  Cleaning the project is necessary beforehand to ensure the build process recreates the object files using SipHash1-3.  Similarly, if you want to revert to SipHash2-4, you will need to clean the project and rebuild.  By default, `make` will build using SipHash2-4.
 
-## Reproducing Results
+## Recreating the Hardware Design
+
+These directions will walk you through recreating the test benches for the SipHash core on the two supported Xilinx boards, the Zedboard and the ZCU-106.
+
+Before starting, please ensure you have Xilinx Vivado 2020.1 (or a compatible version of Vivado) installed
+
+**1)** Clone the repo (if you haven't already)
+
+`git clone https://github.com/bwelte99/SipHash-FPGA-Accelerator.git`
+
+**2)** Navigate to the `/fpga_hw/proj/` directory
+
+`cd path/to/SipHash-FPGA-Accelerator/fpga_hw/proj/`
+
+**3)** Open Vivado.  In the tcl console, source the script corresponding to the board you want to create a project for.  If targeting the Zedboard, run
+
+`source SipHashZedboard.tcl`
+
+Otherwise, if you're targeting the ZCU-106, run
+
+`source SipHashZcu106.tcl`
+
+**NOTE:** You must source these scripts in Vivado's TCL console; they will fail if run from a bash shell.
+
+**4)** You now have a project with a functioning replica of the SipHash core's test benches on one or both boards.  You can either make edits as desired, or click 'Generate Bitstream' to create a bitfile which can directly program an FPGA or be exported to Vitis to create a software project.
+
+## Reproducing Results in Vitis
 ### Prerequisites
 Please ensure you have installed the Xilinx Vitis IDE v2020.1 (or a compatible version)
 
 ### Project Setup
 **1)** Clone the repo (if you haven't already)
+
 `git clone https://github.com/bwelte99/SipHash-FPGA-Accelerator.git`
 
 **2)** Open Vitis
