@@ -2,12 +2,12 @@
 #define vectors_full
 #endif
 
-#ifndef cRounds
-#define cRounds 2
+#ifndef cROUNDS
+#define cROUNDS 2
 #endif
 
-#ifndef dRounds
-#define dRounds 4
+#ifndef dROUNDS
+#define dROUNDS 4
 #endif
 
 
@@ -23,7 +23,7 @@ const static uint64_t keys[] = {
 
 //assign correct hashes based on the algorithm defined here or in the makefile
 //NOTE: default setting is SipHash2-4 unless makefile specifies otherwise
-#if ((cRounds == 2) && (dRounds == 4))
+#if ((cROUNDS == 2) && (dROUNDS == 4))
 const static uint64_t hashes[] = {
 	0xF0801A2F7D1753AD,
 	0xB3464D2236919ECC,
@@ -41,7 +41,7 @@ const static uint64_t hashes[] = {
 	0x4B24657BC1255F89,
 	0xD6EF83620507283C
 };
-#elif ((cRounds == 1) && (dRounds == 3))
+#elif ((cROUNDS == 1) && (dROUNDS == 3))
 const static uint64_t hashes[] = {
 		0xC648D5C186F8DFDF,	//0
 		0x171670EEA9366739,	//1

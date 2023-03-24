@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-I$(IDIR) -O3
+CFLAGS=-I$(IDIR) -O3 -DcRounds=$(CROUNDS) -DdRounds=$(DROUNDS)
 LIBS = -lm
 
 IDIR = ./include
@@ -12,7 +12,11 @@ DEPS = $(patsubst %, $(IDIR)/%, $(_DEPS))
 _OBJ = siphash.o workstation.o
 OBJ = $(patsubst %, $(ODIR)/%, $(_OBJ))
 
-all: $(OBJ) workstation
+CROUNDS = 1
+DROUNDS = 3
+
+all: 	$(OBJ) workstation
+
 
 $(OBJ): $(ODIR)/%.o: $(SRC)/%.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
