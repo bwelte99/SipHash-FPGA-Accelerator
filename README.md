@@ -59,7 +59,7 @@ Otherwise, if you're targeting the ZCU-106, run
 
 **NOTE:** You must source these scripts in Vivado's TCL console; they will fail if run from a bash shell.
 
-**4)** You now have a project with a functioning replica of the SipHash core's test benches on one or both boards.  You can either make edits as desired, or click 'Generate Bitstream' to create a bitfile which can directly program an FPGA or be exported to Vitis to create a software project.
+**4)** You now have a project with a functioning replica of the SipHash core's test benches on one or both boards.  By default, the SipHash cores are configured to implement SipHash1-3.  You can either make edits as desired, or click 'Generate Bitstream' to create a bitfile which can directly program an FPGA or be exported to Vitis to create a software project.
 
 ## Reproducing Results in Vitis
 ### Prerequisites
