@@ -13,10 +13,10 @@ To calculate the latency and throughput for SipHash2-4 on your local workstation
 2) Navigate to the /workstation/ directory
 `cd path/to/SipHash-FPGA-Accelerator/workstation`
 
-3) Run 
+3) Build the project 
 `make`
 
-4) Execute the resulting 'servertest' executable
+4) Run the resulting executable
 `./workstation`
 
 You should see output from a variety of tests indicating the latency and throughput of SipHash2-4 for different input sizes.
