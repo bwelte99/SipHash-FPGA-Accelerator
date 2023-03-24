@@ -21,7 +21,7 @@ CROUNDS = 2
 DROUNDS = 4
 
 #default rule to reset object files and build executable
-all: clean $(OBJ) workstation
+all: $(OBJ) workstation
 
 #rule to create object files
 $(OBJ): $(ODIR)/%.o: $(SRC)/%.c $(DEPS)
