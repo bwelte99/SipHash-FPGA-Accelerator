@@ -7,20 +7,20 @@ The .xsa files under \wrappers\ can be used in Vitis to instantiate a test bench
 ## Testing Siphash on a Workstation Machine
 To calculate the latency and throughput for SipHash2-4 on your local workstation, follow these steps on a Linux machine:
 
-1) Clone the repo
+**1)** Clone the repo
 
 &emsp; `git clone https://github.com/bwelte99/SipHash-FPGA-Accelerator.git`
 
-2) Navigate to the /workstation/ directory
+**2)** Navigate to the /workstation/ directory
 
 
 &emsp; `cd path/to/SipHash-FPGA-Accelerator/workstation`
 
-3) Build the project
+**3)** Build the project
 
 &emsp; `make`
 
-4) Run the resulting executable
+**4)** Run the resulting executable
 
 &emsp; `./workstation`
 
@@ -43,19 +43,19 @@ Before starting, please ensure you have Xilinx Vivado 2020.1 (or a compatible ve
 
 **1)** Clone the repo (if you haven't already)
 
-`git clone https://github.com/bwelte99/SipHash-FPGA-Accelerator.git`
+&emsp; `git clone https://github.com/bwelte99/SipHash-FPGA-Accelerator.git`
 
 **2)** Navigate to the `/fpga_hw/proj/` directory
 
-`cd path/to/SipHash-FPGA-Accelerator/fpga_hw/proj/`
+&emsp; `cd path/to/SipHash-FPGA-Accelerator/fpga_hw/proj/`
 
 **3)** Open Vivado.  In the tcl console, source the script corresponding to the board you want to create a project for.  If targeting the Zedboard, run
 
-`source SipHashZedboard.tcl`
+&emsp; `source SipHashZedboard.tcl`
 
 Otherwise, if you're targeting the ZCU-106, run
 
-`source SipHashZcu106.tcl`
+&emsp; `source SipHashZcu106.tcl`
 
 **NOTE:** You must source these scripts in Vivado's TCL console; they will fail if run from a bash shell.
 
@@ -68,7 +68,7 @@ Please ensure you have installed the Xilinx Vitis IDE v2020.1 (or a compatible v
 ### Project Setup
 **1)** Clone the repo (if you haven't already)
 
-`git clone https://github.com/bwelte99/SipHash-FPGA-Accelerator.git`
+&emsp; `git clone https://github.com/bwelte99/SipHash-FPGA-Accelerator.git`
 
 **2)** Open Vitis
 
