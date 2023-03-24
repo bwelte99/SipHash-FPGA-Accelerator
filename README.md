@@ -9,7 +9,7 @@ To calculate the latency and throughput for SipHash2-4 on your local workstation
 
 1) Clone the repo
 
-`git clone https://github.com/bwelte99/SipHash-FPGA-Accelerator.git`
+&emsp `git clone https://github.com/bwelte99/SipHash-FPGA-Accelerator.git`
 
 2) Navigate to the /workstation/ directory
 
