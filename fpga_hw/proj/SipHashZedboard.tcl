@@ -1836,8 +1836,8 @@ move_dashboard_gadget -name {utilization_2} -row 1 -col 1
 move_dashboard_gadget -name {methodology_1} -row 2 -col 1
 
 # Generate Block Design (BW)
-generate_target all [get_files  /home/bwelte99/siphash/SipHash-FPGA-Accelerator/fpga_hw/proj/SipHashZedboard.srcs/sources_1/bd/SipHashZedboard/SipHashZedboard.bd]
+generate_target all [get_files  $origin_dir/SipHashZedboard.srcs/sources_1/bd/SipHashZedboard/SipHashZedboard.bd]
 
 # Generate VHDL wrapper (BW)
-make_wrapper -files [get_files /home/bwelte99/siphash/SipHash-FPGA-Accelerator/fpga_hw/proj/SipHashZedboard.srcs/sources_1/bd/SipHashZedboard/SipHashZedboard.bd] -top
-add_files -norecurse /home/bwelte99/siphash/SipHash-FPGA-Accelerator/fpga_hw/proj/SipHashZedboard.srcs/sources_1/bd/SipHashZedboard/hdl/SipHashZedboard_wrapper.vhd
+make_wrapper -files [get_files $origin_dir/SipHashZedboard.srcs/sources_1/bd/SipHashZedboard/SipHashZedboard.bd] -top
+add_files -norecurse $origin_dir/SipHashZedboard.srcs/sources_1/bd/SipHashZedboard/hdl/SipHashZedboard_wrapper.vhd
