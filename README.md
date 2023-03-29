@@ -71,11 +71,11 @@ There will be many other directories and files besides the ones pictured above, 
 
 Once again, this can be a lengthy process (up to 10 minutes depending on the chosen board).
 
-**NOTE** At this point, it is common for Vitis to inexplicably forget which directory you specified as the workspace, resulting in an error.  Fortunately, this can be easily fixed by closing Vitis and reopening it, again selecting `path/to/SipHash-FPGA-Accelerator/vitis_proj/vitis_workspace/` as the workspace.
+**NOTE:** At this point, it is common for Vitis to inexplicably forget which directory you specified as the workspace, resulting in an error.  Fortunately, this can be easily fixed by closing Vitis and reopening it, again selecting `path/to/SipHash-FPGA-Accelerator/vitis_proj/vitis_workspace/` as the workspace.
 
 **6)** Finally, you now have a functioning executable (.elf file) which can be run as a bare metal application on your chosen board.  Ensure that the board is set up properly for JTAG programming, including serial connections for JTAG and UART communication.
 
-Open an appropriate program for serial communication (e.g. PuTTY, picocom, minicom, etc).  Connect to the serial port on your workstation corresponding to the programmed board using a baud rate of 115,200.   
+Open an appropriate program for serial communication (e.g. PuTTY, picocom, minicom, etc).  Connect to the serial port on your workstation corresponding to the board you want to program using a baud rate of 115,200.   
 
 **7)** Run the executable on the board (this should be as simple as pressing the play button in the Vitis IDE or launching and running it in debug mode).  The test application should send data for a variety of tests over the serial port including throughput in Gigabits per second and the PL clock cycles that elapsed during hashing.
 
