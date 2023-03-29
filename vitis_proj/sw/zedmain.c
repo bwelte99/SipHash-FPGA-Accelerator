@@ -50,12 +50,6 @@ static enum run_mode {
 #define MODE HW
 #endif
 
-/*
- * Helper function to update the size of the test vectors for the next test case
- * Test vector sizes are from vectors_full.h
- */
-int update_test_vec_size(int old_size);
-
 int main() {
 	init_platform();
 
