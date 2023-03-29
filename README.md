@@ -6,11 +6,11 @@ This README provides instructions for recreating the SipHash core and measuring 
 
 ## Recreating the Hardware Design
 
-These directions will walk you through recreating the test benches for the SipHash core on the two supported Xilinx boards, the Zedboard and the ZCU-106.
+These directions will walk you through recreating the hardware design for the SipHash core in addition to a test bench on either of the two supported Xilinx boards, the Zedboard and the ZCU-106.
 
 Before starting, please ensure you have Xilinx Vivado 2020.1 (or a compatible version of Vivado) installed
 
-**1)** Clone the repo (if you haven't already)
+**1)** Clone the GitHub repo (or access it via Dryad)
 
 &emsp; `git clone https://github.com/bwelte99/SipHash-FPGA-Accelerator.git`
 
@@ -28,7 +28,9 @@ Otherwise, if you're targeting the ZCU-106, run
 
 **NOTE:** You must source these scripts in Vivado's TCL console; they will fail if run from a bash shell.
 
-**4)** You now have a project with a functioning replica of the SipHash core's test benches on one or both boards.  By default, the SipHash cores are configured to implement SipHash1-3.  You can either make edits as desired, or click 'Generate Bitstream' to create a bitfile which can directly program an FPGA or be exported to Vitis to create a software project.
+**4) (Optional)** You now have a project with a functioning replica of the SipHash core's test benches on one or both boards.  By default, the SipHash cores are configured to implement SipHash1-3.  You can either make edits as desired, or click 'Generate Bitstream' to create a bitfile which can directly program an FPGA or be exported to Vitis to create a software project.
+
+If you want to edit the design, you can regenerate the bitstream after saving your changes and export the new configuration as a hardware wrapper (.xsa file) to create a platform for a software application in Vitis.  To save time and complexity, this repository contains ready-made .xsa files targeting the Zedboard and ZCU-106 for use in the next set of instructions generated using the provided Vivado projects.  
 
 ## Reproducing Results in Vitis
 ### Prerequisites
