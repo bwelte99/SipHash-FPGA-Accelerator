@@ -1,6 +1,6 @@
 # Script to rebuild SipHash24_Zedboard in HW mode
 
-puts "Setting comiler options ..."
+puts "Setting compiler options ..."
 app config -name SipHash24_Zedboard -set compiler-optimization {None (-O0)}
 app config -name SipHash24_Zedboard -set compiler-misc {-DRUN_MODE=HW -c -fmessage-length=0 -MT"$@" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard}
 
