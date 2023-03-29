@@ -49,7 +49,7 @@ Please ensure you have installed the Xilinx Vitis IDE v2020.1 (or a compatible v
 
 **4)** You will notice there are three scripts for each possible board/algorithm combination (SipHash1-3 vs. SipHash2-4 and Zedboard vs. ZCU-106) for a total of 12 TCL scripts.  In the XSCT console, source the script ending in 'Create' for the board/algorithm combination you would like to recreate.  For example, if targeting SipHash2-4 on the Zedboard, run
 
-%emsp; `source SipHash24_Zedboard_Create.tcl`
+&emsp; `source SipHash24_Zedboard_Create.tcl`
 
 Note that this will take some time (up to 15~20 minutes depending on which board you are targeting). Once the project has been successfully recreated, you should see an application project in the Vitis GUI with the following file structure:
 
