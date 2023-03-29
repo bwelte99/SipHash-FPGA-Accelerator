@@ -4,36 +4,7 @@ This repository contains the source code for an FPGA-based SipHash accelerator a
 
 The .xsa files under \wrappers\ can be used in Vitis to instantiate a test bench for the core on two Xilinx boards: the Zedboard or the ZCU-106. The \sw\ directory contains the source code written to run the tests, and the test vectors are contained in header files under \vectors\.  The source code that can instantiate the core on any platform is located under \vhdl\
 
-## Testing Siphash on a Workstation Machine
-To calculate the latency and throughput for SipHash2-4 on your local workstation, follow these steps on a Linux machine:
-
-**1)** Clone the repo
-
-&emsp; `git clone https://github.com/bwelte99/SipHash-FPGA-Accelerator.git`
-
-**2)** Navigate to the /workstation/ directory
-
-
-&emsp; `cd path/to/SipHash-FPGA-Accelerator/workstation`
-
-**3)** Build the project
-
-&emsp; `make`
-
-**4)** Run the resulting executable
-
-&emsp; `./workstation`
-
-You should see output from a variety of tests indicating the latency and throughput of SipHash2-4 for different input sizes.
-
-To see results for SipHash1-3 instead of SipHash2-4, clean the project and rebuild with the following commands:
-
-&emsp; `make clean`
-
-&emsp; `make CROUNDS=1 DROUNDS=3`
-
-
-This will rebuild the `workstation` executable using SipHash1-3 instead of SipHash2-4.  Cleaning the project is necessary beforehand to ensure the build process recreates the object files using SipHash1-3.  Similarly, if you want to revert to SipHash2-4, you will need to clean the project and rebuild.  By default, `make` will build using SipHash2-4.
+#
 
 ## Recreating the Hardware Design
 
@@ -109,6 +80,35 @@ To verify the results' correctness, ensure that the proper array of hashes is no
 
 **9)** Assuming the build succeeds, you should now have a functioning baremetal executable for your chosen FPGA.  The application will print the results of a given experiment via UART (baud rate = 115,200) which you can observe with an appropriate program (PuTTY, picocom, etc).
 
+# Testing Siphash on a Workstation Machine
+To calculate the latency and throughput for SipHash2-4 on your local workstation, follow these steps on a Linux machine:
 
+**1)** Clone the repo
+
+&emsp; `git clone https://github.com/bwelte99/SipHash-FPGA-Accelerator.git`
+
+**2)** Navigate to the /workstation/ directory
+
+
+&emsp; `cd path/to/SipHash-FPGA-Accelerator/workstation`
+
+**3)** Build the project
+
+&emsp; `make`
+
+**4)** Run the resulting executable
+
+&emsp; `./workstation`
+
+You should see output from a variety of tests indicating the latency and throughput of SipHash2-4 for different input sizes.
+
+To see results for SipHash1-3 instead of SipHash2-4, clean the project and rebuild with the following commands:
+
+&emsp; `make clean`
+
+&emsp; `make CROUNDS=1 DROUNDS=3`
+
+
+This will rebuild the `workstation` executable using SipHash1-3 instead of SipHash2-4.  Cleaning the project is necessary beforehand to ensure the build process recreates the object files using SipHash1-3.  Similarly, if you want to revert to SipHash2-4, you will need to clean the project and rebuild.  By default, `make` will build using SipHash2-4.
 
 
