@@ -34,51 +34,58 @@ If you want to edit the design, you can regenerate the bitstream after saving yo
 
 ## Reproducing Results in Vitis
 ### Prerequisites
-Please ensure you have installed the Xilinx Vitis IDE v2020.1 (or a compatible version)
+Please ensure you have installed the Xilinx Vitis IDE v2020.1 (or a compatible version) including functioning gcc and g++ toolchains.
 
 ### Project Setup
 **1)** Clone the repo (if you haven't already)
 
 &emsp; `git clone https://github.com/bwelte99/SipHash-FPGA-Accelerator.git`
 
-**2)** Open Vitis
+**2)** Open Vitis, selecting `path/to/SipHash-FPGA-Accelerator/vitis_proj/vitis_workspace` as the workspace when prompted.
 
-**3)** Create a new project (File -> New -> Application Project)
+**3)** Open an XSCT console (Xilinx -> XSCT Console in the toolbar).  In it, navigate to the directory in the repository containing the project setup scripts.
 
-**4)** Select "Create a new platform from hardware (XSA)".  Select the xsa for the board (Zedboard/ZCU-106) and algorithm (SipHash2-4/SipHash1-3) you want to test.  The wrappers can be found at <path_to>/SipHash-FPGA-Accelerator/hardware_wrappers/
+&emsp; `cd path/to/SipHash-FPGA-Accelerator/vitis_proj/project_scripts`
 
-**5)** Name the application and create it using the "Hello World" template.
+**4)** You will notice there are three scripts for each possible board/algorithm combination (SipHash1-3 vs. SipHash2-4 and Zedboard vs. ZCU-106) for a total of 12 TCL scripts.  In the XSCT console, source the script ending in 'Create' for the board/algorithm combination you would like to recreate.  For example, if targeting SipHash2-4 on the Zedboard, run
 
-**6)** Delete helloworld.c from the project's source code files and copy the following files from <path>/SipHash-FPGA-Accelerator/sw/ to the Vitis project's /src/ directory:
-- main.c
-- siphash.c
-- siphash.h
-- vectors_full.h
-- zcu106_addresses.h (if using the zcu106)
-- zedboard_addresses.h (if using the zedboard)
+%emsp; `source SipHash24_Zedboard_Create.tcl`
 
-**7)** Configure the project settings to test SipHash2-4 or SipHash1-3 in hardware or software, as desired.  
-#### Hardware vs. Software mode
-To change whether a hardware or software implementation of SipHash is being timed, change the macro definition of TIMING_MODE in main.c appropriately.  For example, `#define TIMING_MODE HARDWARE` will select hardware mode, and `#define TIMING_MODE SOFTWARE` will select software.
+Note that this will take some time (up to 15~20 minutes depending on which board you are targeting). Once the project has been successfully recreated, you should see an application project in the Vitis GUI with the following file structure:
 
-#### Number of Test Cores
-To vary the number of iterations of SipHash used in the test, change the macro definition of NUM_TEST_CORES in main.c.  If the selected timing mode is hardware, this macro will control the number of parallel cores on the FPGA that are utilized. If the selected timing mode is software, the `siphash()` function will be sequentially invoked once for each core. Valid values of NUM_TEST_CORES range from 1 to 16, inclusive.
+{wrapper_name}\_wrapper/
+{application_name}\_system/
+|---{application_name}
+    |---src/
+        |---siphash.c
+        |---siphash.h
+        |---vectors.h
+        |---{zedboard, zcu106}\_addresses.h
+        |---{zed, zcu}main.c
+        
+There will be many other directories and files besides the ones pictured above, but these are the crucial ones to check for to ensure the script worked.
 
-#### SipHash2-4 vs. SipHash1-3
-Note that the version of SipHash the FPGA will execute is determined by the .xsa file you chose at the beginning of project creation!
-  
-To switch the software implementation from SipHash2-4 to SipHash1-3, change the definitions of cRounds and dRounds in siphash.c from 2 and 4 respectively to 1 and 3.  Conversely, to switch back to SipHash2-4, revert cRounds and dRounds to 2 and 4.  
+**5)** Having confirmed the preceding script successfully generated the project, let's turn our attention to the other two scripts relevant to your configuration.  The scripts ending in 'BuildHW' will configure the application to profile the performance of the SipHash hardware cores while the SW scripts will build a pure software application compiled with -O3 optimization to provide the best possible benchmark. Decide whether to time hardware or software hashing and then source the corresponding script.  For example, if timing Siphash2-4 hardware on the Zedboard, run
 
-To verify the results' correctness, ensure that the proper array of hashes is not commented out in vectors_full.h.  If you scroll to the bottom of vectors_full.h, you will notice there are two declarationsof `hashes[]`, one for SipHash2-4 and another for SipHash1-3.  Ensure that the array declaration for the algorithm you are using is uncommented and comment out the array declaration for the one that's not in use.
-  
-**8)** Finally, build the project in the Vitis IDE.  Note that if you are timing the SipHash software, you will see the best results by compiling with -O3 optimization, but if you are timing the hardware, the application will only function correctly if compiled with -O0.  To change optimization settings, right click the application in the project explorer and go to "C/C++ Build Settings" -> "C/C++ Build" -> "Settings" -> "ARM v8 gcc compiler" -> "Optimization" and select the desired optimization level from the drop-down menu.
-  
-![image](https://user-images.githubusercontent.com/71848340/225122319-fda39745-5b39-4bff-826c-13230ae18cf5.png)
+`source SipHash24_Zedboard_BuildHW.tcl`
 
-![image](https://user-images.githubusercontent.com/71848340/225122422-c400b3d1-4a47-41fa-93ab-59d51b5438cb.png)
+Once again, this will be a lengthy process (up to 10 minutes depending on the chosen board).
 
+**NOTE** At this point, it is common for Vitis to inexplicably forget which directory you specified as the workspace, resulting in an error.  Fortunately, this can be easily fixed by closing Vitis and reopening it, again selecting `path/to/SipHash-FPGA-Accelerator/vitis_proj/vitis_workspace/` as the workspace.
 
-**9)** Assuming the build succeeds, you should now have a functioning baremetal executable for your chosen FPGA.  The application will print the results of a given experiment via UART (baud rate = 115,200) which you can observe with an appropriate program (PuTTY, picocom, etc).
+**6)** Finally, you now have a functioning executable (.elf file) which can be run as a bare metal application on your chosen board.  Ensure that the board is set up properly for JTAG programming, including serial connections for JTAG and UART communication.
+
+Open an appropriate program for serial communication (e.g. PuTTY, picocom, minicom, etc).  Connect to the serial port on your workstation corresponding to the programmed board using a baud rate of 115,200.   
+
+**7)** Run the executable on the board (this should be as simple as pressing the play button in the Vitis IDE or launching and running it in debug mode).  The test application should send data for a variety of tests over the serial port including throughput in Gigabits per second and the PL clock cycles that elapsed during hashing.
+
+**8)** You can easily reconfigure the project from hardware to software timing or vice versa by sourcing the build script for the configuration you want to run in the XSCT console.  For example, if we want to switch from SipHash2-4 hardware to software on the Zedboard, run
+
+&emsp; `source SipHash24_Zedboard_BuildSW.tcl`
+
+You can also repeat steps 4-7 to reproduce results for other algorithm/board combinations you haven't run yet, although you will have to take care to ensure you're running the executable you want if multiple projects exist in your workspace.
+
+The provided Vitis projects should be sufficient to reproduce the performance (i.e. throughput and speedup vs. software) reported in the conference paper.  To obtain speedup vs. software, simply divide the throughput for the hardware implementation of an algorithm, e.g. SipHash2-4 on the Zedboard, by the software throughput for that same board/algorithm combination.
 
 # Testing Siphash on a Workstation Machine
 To calculate the latency and throughput for SipHash2-4 on your local workstation, follow these steps on a Linux machine:
