@@ -79,7 +79,7 @@ Open an appropriate program for serial communication (e.g. PuTTY, picocom, minic
 
 **7)** Run the executable on the board (this should be as simple as pressing the play button in the Vitis IDE or launching and running it in debug mode).  The test application should send data for a variety of tests over the serial port including throughput in Gigabits per second and the PL clock cycles that elapsed during hashing.
 
-**8)** You can easily reconfigure the project from hardware to software timing or vice versa by sourcing the build script for the configuration you want to run in the XSCT console.  For example, if we want to switch from SipHash2-4 hardware to software on the Zedboard, run
+**8) (Optional)** You can easily reconfigure the project from hardware to software timing or vice versa by sourcing the build script for the configuration you want to run in the XSCT console.  For example, if we want to switch from SipHash2-4 hardware to software on the Zedboard, run
 
 &emsp; `source SipHash24_Zedboard_BuildSW.tcl`
 
