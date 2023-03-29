@@ -1,4 +1,4 @@
-# Script to rebuild SipHash24_Zedboard in either HW or SW mode (default is HW)
+# Script to rebuild SipHash24_Zedboard in HW mode
 
 puts "Setting comiler options ..."
 app config -name SipHash24_Zedboard -set compiler-optimization {None (-O0)}
