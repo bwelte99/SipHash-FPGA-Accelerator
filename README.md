@@ -14,11 +14,11 @@ Before starting, please ensure you have Xilinx Vivado 2020.1 (or a compatible ve
 
 &emsp; `git clone https://github.com/bwelte99/SipHash-FPGA-Accelerator.git`
 
-**2)** Navigate to the `/fpga_hw/proj/` directory
+**2)** Open Vivado.  In the TCL console, navigate to the `/fpga_hw/proj/` directory
 
 &emsp; `cd path/to/SipHash-FPGA-Accelerator/fpga_hw/proj/`
 
-**3)** Open Vivado.  In the tcl console, source the script corresponding to the board you want to create a project for.  If targeting the Zedboard, run
+**3)** Source the script corresponding to the board you want to create a project for in the TCL console.  If targeting the Zedboard, run
 
 &emsp; `source SipHashZedboard.tcl`
 
