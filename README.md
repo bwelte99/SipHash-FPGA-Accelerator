@@ -1,8 +1,8 @@
 # SipHash-FPGA-Accelerator
 ## Description
-This repository contains the source code for an FPGA-based SipHash accelerator and an accompanying test bench implemented in VHDL.
+This repository contains an FPGA-based accelerator for SipHash, a pseudorandom keyed hash function, as well as hardware and software for a test bench that can profile the core's performance.  The core and its hardware test bench are implemented at the RTL level in VHDL, and the test bench software is written in C.
 
-The .xsa files under \wrappers\ can be used in Vitis to instantiate a test bench for the core on two Xilinx boards: the Zedboard or the ZCU-106. The \sw\ directory contains the source code written to run the tests, and the test vectors are contained in header files under \vectors\.  The source code that can instantiate the core on any platform is located under \vhdl\
+This README provides instructions for recreating the SipHash core and measuring its performance using v2020.1 of Vivado and Vitis, Xilinx's FPGA design tools.  Scripts written in Xilinx's tools control language (TCL) recreate the SipHash core along with its hardware test bench in Vivado, and similar scripts allow for exporting the hardware to Vitis, integrating it with a simple test application, and experimentally measuring the core's performance (i.e. reproducing results).  The repository also includes code and accompanying instructions to test SipHash's speed on a local workstation machine.
 
 ## Recreating the Hardware Design
 
