@@ -32,7 +32,7 @@
 #endif
 
 //Number of SipHash cores instantiated in hardware
-#define NUM_HW_CORES 8
+#define NUM_HW_CORES 16
 
 //clock period (ns) for SipHash on the ZCU-106
 #define clk_per 5.33
