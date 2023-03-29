@@ -22,15 +22,26 @@
 #include "zedboard_addresses.h"
 //#include "zcu106_addresses.h"
 
+//define algorithmic parameters for SipHash (build script can override these defaults)
+#ifndef cROUNDS
 #define cROUNDS 2
-#define dROUNDS 4
+#endif
 
-//Number of SipHash instantiated in hardware
+#ifndef dROUNDS
+#define dROUNDS 4
+#endif
+
+//Number of SipHash cores instantiated in hardware
 #define NUM_HW_CORES 8
 
-//clock period (ns) for SipHash2-4 on the Zedboard
+//clock period (ns) for SipHash on the Zedboard (varies based on # compression, finalization rounds)
+#if ((cROUNDS == 2) && (dROUNDS == 4))
 #define clk_per 15.33
+#elif ((cROUNDS == 1) && (dROUNDS == 3))
+#define clk_per 9.33
+#endif
 
+//configure build in hardware or software mode (build script can override these defaults)
 static enum run_mode {
 	HW, SW
 };
