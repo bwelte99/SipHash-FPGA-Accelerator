@@ -55,13 +55,13 @@ Note that this will take some time (up to 15~20 minutes depending on which board
 
 {wrapper_name}\_wrapper/  
 {application_name}\_system/  
-|---{application_name}  
-&emsp;    |---src/  
-&emsp;&emsp;        |---siphash.c  
-&emsp;&emsp;        |---siphash.h  
-&emsp;&emsp;        |---vectors.h  
-&emsp;&emsp;        |---{zedboard, zcu106}\_addresses.h  
-&emsp;&emsp;        |---{zed, zcu}main.c  
+|--{application_name}  
+&emsp;    |--src/  
+&emsp;&emsp;        |--siphash.c  
+&emsp;&emsp;        |--siphash.h  
+&emsp;&emsp;        |--vectors.h  
+&emsp;&emsp;        |--{zedboard, zcu106}\_addresses.h  
+&emsp;&emsp;        |--{zed, zcu}main.c  
         
 There will be many other directories and files besides the ones pictured above, but these are the crucial ones to check for to ensure the script worked.
 
