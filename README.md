@@ -34,7 +34,7 @@ If you want to edit the design, you can regenerate the bitstream after saving yo
 
 ## Reproducing Results in Vitis
 ### Prerequisites
-Please ensure you have installed the Xilinx Vitis IDE v2020.1 (or a compatible version) including functioning gcc and g++ toolchains.
+Please ensure you have installed the Xilinx Vitis IDE v2020.1 (or a compatible version) including functioning gcc and g++ toolchains.  You will also need serial communication software such as PuTTY, picocom, or an equivalent program.
 
 ### Project Setup
 **1)** Clone the repo (if you haven't already)
