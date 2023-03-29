@@ -69,7 +69,7 @@ There will be many other directories and files besides the ones pictured above, 
 
 `source SipHash24_Zedboard_BuildHW.tcl`
 
-Once again, this will be a lengthy process (up to 10 minutes depending on the chosen board).
+Once again, this can be a lengthy process (up to 10 minutes depending on the chosen board).
 
 **NOTE** At this point, it is common for Vitis to inexplicably forget which directory you specified as the workspace, resulting in an error.  Fortunately, this can be easily fixed by closing Vitis and reopening it, again selecting `path/to/SipHash-FPGA-Accelerator/vitis_proj/vitis_workspace/` as the workspace.
 
