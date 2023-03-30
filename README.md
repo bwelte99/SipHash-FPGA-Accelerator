@@ -67,7 +67,7 @@ There will be many other directories and files besides the ones pictured above, 
 
 **5)** Having confirmed the preceding script successfully generated the project, let's turn our attention to the other two scripts relevant to your configuration.  The scripts ending in 'BuildHW' will configure the application to profile the performance of the SipHash hardware cores while the SW scripts will build a pure software application compiled with -O3 optimization to provide the best possible benchmark. Decide whether to time hardware or software hashing and then source the corresponding script.  For example, if timing Siphash2-4 hardware on the Zedboard, run
 
-`source SipHash24_Zedboard_BuildHW.tcl`
+&emsp; `source SipHash24_Zedboard_BuildHW.tcl`
 
 Once again, this can be a lengthy process (up to 10 minutes depending on the chosen board).
 
