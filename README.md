@@ -10,7 +10,7 @@ These directions will walk you through recreating the hardware design for the Si
 
 Before starting, please ensure you have Xilinx Vivado 2020.1 (or a compatible version of Vivado) installed
 
-**1)** Clone the GitHub repo (or access it via Dryad)
+**1)** Clone the GitHub repo
 
 &emsp; `git clone https://github.com/bwelte99/SipHash-FPGA-Accelerator.git`
 
