@@ -30,7 +30,7 @@ Otherwise, if you're targeting the ZCU-106, run
 
 **4) (Optional)** You now have a project with a functioning replica of the SipHash core's test benches on one or both boards.  By default, the SipHash cores are configured to implement SipHash1-3.  You can either make edits as desired, or click 'Generate Bitstream' to create a bitfile which can directly program an FPGA or be exported to Vitis to create a software project.
 
-If you want to edit the design, you can regenerate the bitstream after saving your changes and export the new configuration as a hardware wrapper (.xsa file) to create a platform for a software application in Vitis.  To save time and complexity, this repository contains ready-made .xsa files targeting the Zedboard and ZCU-106 for use in the next set of instructions generated using the provided Vivado projects.  
+If you want to edit the design, you can regenerate the bitstream after saving your changes and export the new configuration as a hardware wrapper (.xsa file) to create a platform for a software application in Vitis.  To save time and complexity, this repository contains ready-made .xsa files targeting the Zedboard and ZCU-106 that were generated using the provided Vivado projects for use in the next set of instructions.  
 
 ## Reproducing Results in Vitis
 ### Prerequisites
